@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulasi Proses Mahasiswa</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #2C3E50, #34495E);
+            color: #FAD4D8;
+            padding: 40px;
+        }
+
+        h1, h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            font-size: 2.8rem;
+            color: #FAD4D8;
+        }
+
+        h2 {
+            font-size: 1.8rem;
+            color: #F7BAC8;
+        }
+
+        main {
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 30px;
+            background: #2C3E50;
+            border-radius: 12px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        button {
+            width: 100%;
+            padding: 15px;
+            background: #F7BAC8;
+            border: none;
+            font-size: 1.5rem;
+            border-radius: 8px;
+            color: #2C3E50;
+            cursor: pointer;
+            transition: background 0.3s ease-in-out;
+        }
+
+        button:hover {
+            background: #FAD4D8;
+        }
+
+        .logs {
+            margin-top: 30px;
+            padding: 20px;
+            background: #34495E;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            height: 300px;
+            overflow-y: scroll;
+            color: #FAD4D8;
+        }
+
+        .log-entry {
+            background: #3A6073;
+            margin-bottom: 15px;
+            padding: 10px;
+            border-radius: 5px;
+            animation: fadeIn 0.5s ease-out;
+        }
+
+        .log-entry p {
+            margin: 0;
+            font-size: 1rem;
+            line-height: 1.5;
+        }
+
+        @keyframes fadeIn {
+            0% { opacity: 0; transform: translateY(-20px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        .code-block {
+            font-family: 'Courier New', Courier, monospace;
+            background-color: #1E3A5F;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 30px;
+            overflow-x: auto;
+            color: #FAD4D8;
+            white-space: pre-wrap;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Simulasi Proses Mahasiswa</h1>
+    </header>
+
+    <main>
+        <h2>Langkah-langkah Proses Mahasiswa</h2>
+
+        <div class="code-block">
+<pre>
+class Student:
+    def __init__(self, name):
+        self.name = name
+        self.spp_paid = False
+        self.grades = []
+
+    def pay_spp(self):
+        self.spp_paid = True
+        print(f"{self.name} telah membayar SPP.")
+
+    def enroll_course(self, course):
+        if not self.spp_paid:
+            print(f"{self.name} tidak bisa mendaftar ke mata kuliah {course} sebelum membayar SPP.")
+        else:
+            print(f"{self.name} telah mendaftar ke mata kuliah {course}.")
+
+    def submit_grade(self, grade):
+        self.grades.append(grade)
+        print(f"{self.name} telah mendapatkan nilai {grade}.")
+
+    def calculate_final_grade(self):
+        if not self.grades:
+            return 0
+        final_grade = sum(self.grades) / len(self.grades)
+        return final_grade
+
+    def display_final_grade(self):
+        final_grade = self.calculate_final_grade()
+        print(f"Nilai akhir {self.name} adalah {final_grade:.2f}.")
+
+
+def main():
+    kacrut = Student("Kacrut")
+    kacrut.pay_spp()
+    kacrut.enroll_course("Pemrograman Dasar")
+    kacrut.enroll_course("Algoritma dan Struktur Data")
+    kacrut.submit_grade(85)
+    kacrut.submit_grade(90)
+    kacrut.display_final_grade()
+
+
+if __name__ == "__main__":
+    main()
+</pre>
+        </div>
+
+        <button onclick="runSimulatedFlow()">Jalankan Simulasi</button>
+
+        <div class="logs" id="logs">
+            <p>Hasil akan muncul di sini...</p>
+        </div>
+    </main>
+
+    <script>
+        function runSimulatedFlow() {
+            const logs = [];
+            logs.push("Proses mulai: Mahasiswa Kacrut mulai mengikuti kuliah.");
+
+            // Simulate the process
+            const sppTerbayar = true;
+            if (sppTerbayar) {
+                logs.push("SPP berhasil dibayarkan.");
+                logs.push("Mahasiswa Kacrut telah mendaftar ke mata kuliah Pemrograman Dasar.");
+                logs.push("Mahasiswa Kacrut telah mendaftar ke mata kuliah Algoritma dan Struktur Data.");
+
+                const grades = [85, 90];
+                const finalGrade = grades.reduce((acc, grade) => acc + grade, 0) / grades.length;
+                logs.push("Nilai ujian diproses.");
+                logs.push(`Nilai akhir untuk Kacrut adalah ${finalGrade.toFixed(2)}.`);
+            } else {
+                logs.push("SPP belum dibayarkan. Proses dihentikan.");
+            }
+
+            logs.push("Proses selesai: Mahasiswa Kacrut berhasil mendapatkan KHS.");
+
+            const logsDiv = document.getElementById('logs');
+            logsDiv.innerHTML = logs.map(log => `<div class="log-entry"><p>${log}</p></div>`).join('');
+        }
+    </script>
+</body>
+</html>
