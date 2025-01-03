@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Laporan Clustering</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 20px;
+            background-color: #2b3a55;
+            color: #f8e6f0;
+        }
+
+        h1, h2 {
+            text-align: center;
+        }
+
+        h1 {
+            color: #f8e6f0;
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            margin-top: 30px;
+            color: #f2d7e2;
+        }
+
+        h3 {
+            color: #e2a3c7;
+            margin-bottom: 10px;
+        }
+
+        p {
+            text-align: center;
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+        }
+
+        .cluster {
+            margin-bottom: 20px;
+            background-color: #3a4d6d;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            background: #4a5e7f;
+            margin: 5px 0;
+            padding: 10px;
+            border-radius: 5px;
+            color: #f8e6f0;
+            font-size: 1rem;
+            transition: background 0.3s ease;
+        }
+
+        li:hover {
+            background: #e2a3c7;
+            color: #2b3a55;
+            cursor: pointer;
+        }
+
+        button {
+            display: block;
+            margin: 20px auto;
+            padding: 10px 20px;
+            background-color: #e2a3c7;
+            color: #2b3a55;
+            border: none;
+            font-size: 1.2rem;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #d392b5;
+        }
+
+        .cluster.hidden {
+            display: none;
+        }
+    </style>
+    <script>
+        function toggleClusters() {
+            const clusters = document.querySelectorAll('.cluster');
+            clusters.forEach(cluster => {
+                cluster.classList.toggle('hidden');
+            });
+        }
+    </script>
+</head>
+
+<body>
+    <h1>Laporan Hasil Clustering</h1>
+    <p>Data diproses dan dianalisis dengan metode TF-IDF dan algoritma KMeans untuk membuat 3, 4, dan 5 klaster.</p>
+    <button onclick="toggleClusters()">Toggle Clusters</button>
+    <h2>Analisis</h2>
+    <div>
+        <div class="cluster">
+            <h3>Hasil Clustering (3 Klaster)</h3>
+            <ul>
+                <li>Cluster 0: whatsapp, fki, mentoring</li>
+                <li>Cluster 1: whatsapp, fki, mentoring</li>
+                <li>Cluster 2: whatsapp, fki, mentoring</li>
+            </ul>
+        </div>
+        <div class="cluster">
+            <h3>Hasil Clustering (4 Klaster)</h3>
+            <ul>
+                <li>Cluster 0: whatsapp, fki, mentoring</li>
+                <li>Cluster 1: whatsapp, fki, mentoring</li>
+                <li>Cluster 2: whatsapp, fki, mentoring</li>
+                <li>Cluster 3: whatsapp, fki, mentoring</li>
+            </ul>
+        </div>
+        <div class="cluster">
+            <h3>Hasil Clustering (5 Klaster)</h3>
+            <ul>
+                <li>Cluster 0: whatsapp, fki, mentoring</li>
+                <li>Cluster 1: whatsapp, fki, mentoring</li>
+                <li>Cluster 2: whatsapp, fki, mentoring</li>
+                <li>Cluster 3: whatsapp, fki, mentoring</li>
+                <li>Cluster 4: whatsapp, fki, mentoring</li>
+            </ul>
+        </div>
+    </div>
+</body>
+
+</html>
